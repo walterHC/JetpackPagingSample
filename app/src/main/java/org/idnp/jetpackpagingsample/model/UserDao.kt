@@ -1,10 +1,11 @@
-package org.idnp.jetpackpagingsample
+package org.idnp.jetpackpagingsample.model
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import org.idnp.jetpackpagingsample.entities.User
 
 @Dao
 interface UserDao {

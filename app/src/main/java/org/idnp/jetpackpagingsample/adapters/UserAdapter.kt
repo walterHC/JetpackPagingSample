@@ -1,9 +1,11 @@
-package org.idnp.jetpackpagingsample
+package org.idnp.jetpackpagingsample.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import org.idnp.jetpackpagingsample.R
+import org.idnp.jetpackpagingsample.entities.User
 
 //class UserAdapter(diffCallback: DiffUtil.ItemCallback<User>) :
 class UserAdapter : PagingDataAdapter<User, UserViewHolder>(DiffUtilCallBack()) {

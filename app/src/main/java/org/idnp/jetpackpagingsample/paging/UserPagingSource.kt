@@ -1,12 +1,13 @@
-package org.idnp.jetpackpagingsample
+package org.idnp.jetpackpagingsample.paging
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import org.idnp.jetpackpagingsample.entities.User
+import org.idnp.jetpackpagingsample.model.UserRepository
 import java.io.IOException
 
-class ExamplePagingSource(
-    val backendService: ExampleBackendService
+class UserPagingSource(
+    private val userRepository: UserRepository
 ) : PagingSource<Int, User>() {
 
     override val keyReuseSupported: Boolean = true
@@ -14,12 +15,12 @@ class ExamplePagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, User> {
         return try {
             val nextPageNumber = params.key ?: 1
-            val users = backendService.searchUsers(nextPageNumber)
+            val users = userRepository.getUsers(nextPageNumber)
 
             return LoadResult.Page(
                 data = users ?: listOf(),
-                prevKey = null,
-                nextKey = null
+                prevKey = if (nextPageNumber > 1) nextPageNumber - 1 else 1,
+                nextKey = nextPageNumber + 1
             )
 
         } catch (exception: IOException) {

@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.idnp.jetpackpagingsample.adapters.UserAdapter
+import org.idnp.jetpackpagingsample.paging.UserViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val viewModel by viewModels<ExampleViewModel>()
+        val viewModel by viewModels<UserViewModel>()
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         val pagingAdapter = UserAdapter()
 
@@ -24,8 +26,6 @@ class MainActivity : AppCompatActivity() {
             addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
         }
 
-        // Activities can use lifecycleScope directly, but Fragments should instead use
-        // viewLifecycleOwner.lifecycleScope.
         lifecycleScope.launch {
             viewModel.items().collectLatest { pageData ->
                 pagingAdapter.submitData(pageData)
