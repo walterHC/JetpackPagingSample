@@ -1,30 +1,32 @@
 package org.idnp.jetpackpagingsample.tools;
 
 import android.content.Context;
-
+import android.util.Log;
 import org.idnp.jetpackpagingsample.entities.Country;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FillDatabase {
 
-    public static List<Country> readAndParseFile(String filename) {
+    public static List<Country> readAndParseFile(Context context, String filename) {
         List<Country> countries = new ArrayList<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(filename));
+            InputStream inputStream = context.getAssets().open(filename);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuilder jsonString = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
                 jsonString.append(line);
             }
 
-            JSONArray jsonArray = new JSONArray(jsonString.toString());
+            JSONObject json = new JSONObject(jsonString.toString());
+            JSONArray jsonArray = json.getJSONArray("countries");
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -45,6 +47,8 @@ public class FillDatabase {
                 countries.add(country);
             }
 
+            Log.d("Text", countries.toString());
+
             reader.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,4 +56,5 @@ public class FillDatabase {
 
         return countries;
     }
+
 }
