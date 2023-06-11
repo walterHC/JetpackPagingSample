@@ -7,7 +7,7 @@
     android:background="#00B8D4">
 
     <TextView
-        android:id="@+id/textViewCui"
+        android:id="@+id/name_es"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -18,24 +18,37 @@
         app:layout_constraintVertical_bias="0.491" />
 
     <TextView
-        android:id="@+id/textViewFirstName"
+        android:id="@+id/continent_es"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
+        android:layout_marginStart="120dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.491" />
 
     <TextView
-        android:id="@+id/textViewSecondName"
+        android:id="@+id/capital_es"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="260dp"
+        android:layout_marginStart="228dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.491" />
+
+    <TextView
+        android:id="@+id/km2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="336dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.508" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,14 +8,17 @@ import org.idnp.jetpackpagingsample.entities.Country
 
 class CountryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    private val cuiText = view.findViewById<TextView>(R.id.textViewCui) as TextView
-    private val firstNameText = view.findViewById<TextView>(R.id.textViewFirstName) as TextView
-    private val secondNameText = view.findViewById<TextView>(R.id.textViewSecondName) as TextView
+    private val nameText = view.findViewById<TextView>(R.id.name_es) as TextView
+    private val continentText = view.findViewById<TextView>(R.id.continent_es) as TextView
+    private val capitalText = view.findViewById<TextView>(R.id.capital_es) as TextView
+    private val areaText = view.findViewById<TextView>(R.id.km2) as TextView
 
     fun bind(country: Country) {
         with(country) {
-            cuiText.text = name_en.toString()
-            firstNameText.text = name_es.toString()
+            nameText.text = name_es.toString()
+            continentText.text = continent_es.toString()
+            capitalText.text = capital_es.toString()
+            areaText.text = km2.toString()
         }
     }
 }

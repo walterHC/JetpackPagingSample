@@ -28,7 +28,9 @@ class CountryViewModel(context: Context) : ViewModel() {
         }.flow.cachedIn(viewModelScope)
 
         return pager
-
     }
 
+    suspend fun insertCountries(countries: List<Country>) {
+        countryRepository.insertCountries(countries)
+    }
 }
